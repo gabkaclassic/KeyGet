@@ -4,6 +4,7 @@ import org.example.sender.KeySender;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -17,9 +18,9 @@ public class ManagementController {
     }
 
     @PostMapping
-    public ResponseEntity changeKeys() {
+    public ResponseEntity changeKeys(@RequestParam String secretKey) {
 
-        sender.sendKey();
+        sender.sendKey(secretKey);
 
         return ResponseEntity.ok().build();
     }
